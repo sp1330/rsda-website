@@ -1,0 +1,5 @@
+# Redirect www → root (Cloudflare Pages handles the domain, this is a fallback)
+https://www.rsdriveautomation.co.nz/* https://rsdriveautomation.co.nz/:splat 301!
+
+# Catch-all: serve index.html for all paths (SPA routing)
+/*    /index.html   200

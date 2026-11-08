@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rsdriveautomation.co.nz/sitemap.xml

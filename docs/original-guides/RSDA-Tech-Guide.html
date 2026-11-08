@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RS Drive Automation — Technical Handover Guide</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1A2E;--red:#C0392B;--red2:#e74c3c;--border:#e2e6ea;--muted:#6b7280;--off:#f8f9fb;--green:#16a34a;--orange:#d97706;--blue:#2563eb}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;color:#1a1a2e;background:#fff;line-height:1.72}
+.sidebar{position:fixed;top:0;left:0;width:265px;height:100vh;background:var(--navy);overflow-y:auto;padding:1.5rem 0;z-index:100}
+.sidebar-logo{padding:0 1.5rem 1.4rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:.75rem}
+.sidebar-logo .name{font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2}
+.sidebar-logo .name span{color:#e74c3c}
+.sidebar-logo .sub{font-size:.62rem;color:rgba(255,255,255,.38);letter-spacing:.09em;text-transform:uppercase;margin-top:.2rem}
+.sidebar-logo .badge{display:inline-block;background:var(--green);color:#fff;font-size:.62rem;font-weight:700;padding:.18rem .5rem;border-radius:4px;margin-top:.6rem;letter-spacing:.04em}
+.nav-sec{padding:.5rem 1.5rem .15rem;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:.6rem}
+.sidebar a{display:block;padding:.45rem 1.5rem;font-size:.83rem;color:rgba(255,255,255,.58);text-decoration:none;transition:all .15s;border-left:3px solid transparent}
+.sidebar a:hover,.sidebar a.active{color:#fff;background:rgba(255,255,255,.06);border-left-color:var(--red2)}
+.main{margin-left:265px;padding:3rem 3.5rem;max-width:980px}
+h1{font-size:2rem;font-weight:800;color:var(--navy);margin-bottom:.4rem}
+h2{font-size:1.3rem;font-weight:700;color:var(--navy);margin:2.75rem 0 1rem;padding-bottom:.5rem;border-bottom:2px solid var(--border);scroll-margin-top:1.5rem}
+h3{font-size:1rem;font-weight:700;color:var(--navy);margin:1.6rem 0 .55rem}
+h4{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:1.1rem 0 .35rem}
+p{margin-bottom:.8rem;color:#374151}
+ul,ol{padding-left:1.4rem;margin-bottom:.8rem}
+li{margin-bottom:.3rem;color:#374151}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+code{background:#f1f3f5;border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.83rem;font-family:'SF Mono','Fira Code',monospace;color:#c0392b}
+pre{background:#0d1b2e;color:#e2e8f0;border-radius:8px;padding:1.2rem 1.5rem;overflow-x:auto;margin:.8rem 0 1.2rem;font-size:.82rem;font-family:'SF Mono','Fira Code',monospace;line-height:1.7}
+pre .c{color:#64748b} pre .k{color:#7dd3fc} pre .v{color:#86efac} pre .s{color:#fda4af}
+.card{background:var(--off);border:1px solid var(--border);border-radius:10px;padding:1.4rem;margin:.85rem 0}
+.card-title{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.85rem 0}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;padding:.18rem .5rem;border-radius:4px;letter-spacing:.03em;margin-right:.25rem}
+.tg{background:#dcfce7;color:#15803d} .tb{background:#dbeafe;color:#1d4ed8} .tr{background:#fee2e2;color:#b91c1c} .to{background:#ffedd5;color:#c2410c} .tg2{background:#f1f5f9;color:#475569}
+.step{display:flex;gap:.85rem;margin-bottom:.9rem;align-items:flex-start}
+.step-n{width:26px;height:26px;min-width:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:.1rem}
+.warn{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:.9rem 1.15rem;margin:.85rem 0;font-size:.87rem;color:#78350f}
+.warn strong,.tip strong,.danger strong{display:block;margin-bottom:.2rem;font-size:.88rem}
+.tip{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:.9rem 1.15rem;margin:.85rem 0;font-size:.87rem;color:#1e3a5f}
+.danger{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:.9rem 1.15rem;margin:.85rem 0;font-size:.87rem;color:#7f1d1d}
+.ok{background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:.9rem 1.15rem;margin:.85rem 0;font-size:.87rem;color:#14532d}
+.ok strong{display:block;margin-bottom:.2rem}
+table{width:100%;border-collapse:collapse;margin:.8rem 0 1.2rem;font-size:.86rem}
+th{background:var(--navy);color:#fff;padding:.58rem .9rem;text-align:left;font-size:.76rem;font-weight:600;letter-spacing:.04em}
+td{padding:.58rem .9rem;border-bottom:1px solid var(--border);color:#374151;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+hr{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+@media(max-width:900px){.sidebar{display:none}.main{margin-left:0;padding:2rem 1.4rem}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="name"><span>RS Drive</span> Automation</div>
+    <div class="sub">Technical Handover Guide</div>
+    <div class="badge">● LIVE — rsdriveautomation.co.nz</div>
+  </div>
+  <div class="nav-sec">Overview</div>
+  <a href="#architecture">System Architecture</a>
+  <a href="#accounts">All Accounts & Logins</a>
+  <div class="nav-sec">Infrastructure</div>
+  <a href="#cloudflare">Cloudflare Pages (Website)</a>
+  <a href="#railway">Railway (Backend Server)</a>
+  <a href="#pocketbase">PocketBase (Database)</a>
+  <a href="#github">GitHub (Code Repo)</a>
+  <a href="#resend">Resend (Emails)</a>
+  <a href="#domain">Domain & DNS</a>
+  <div class="nav-sec">Website Content</div>
+  <a href="#files">File & Folder Structure</a>
+  <a href="#pages">Page Map</a>
+  <a href="#common">Common Content Changes</a>
+  <a href="#images">Images</a>
+  <a href="#legal">Legal Pages</a>
+  <div class="nav-sec">Features</div>
+  <a href="#forms">Contact & Sell Forms</a>
+  <a href="#logos">Brand Logo System</a>
+  <a href="#manufacturers">Manufacturers Section</a>
+  <div class="nav-sec">SEO & Growth</div>
+  <a href="#seo">SEO Setup</a>
+  <a href="#todo">Remaining To-Do</a>
+</nav>
+
+<main class="main">
+
+  <div style="margin-bottom:2.5rem">
+    <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem">RS Drive Automation</div>
+    <h1>Technical Handover Guide</h1>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:.3rem">Last updated: 27 April 2026 &nbsp;·&nbsp; <span class="tag tb">rsdriveautomation.co.nz</span> <span class="tag tg">Site: Live</span></p>
+    <p style="margin-top:1rem;max-width:640px;color:#374151">Everything a new developer or tech team member needs to understand, access, and manage the RS Drive Automation website from day one. Read this top to bottom before touching anything.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ARCHITECTURE
+  ══════════════════════════════════════════ -->
+  <section id="architecture">
+    <h2>System Architecture</h2>
+    <p>The site is split into two completely separate services that work together:</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">🌐 Frontend — Cloudflare Pages</div>
+        <p style="font-size:.87rem;margin:0">A single static HTML file containing the entire website. No React, no build process. Deployed by uploading a folder directly to Cloudflare. Served globally via Cloudflare's CDN.</p>
+        <div style="margin-top:.75rem"><span class="tag tg">Static HTML/CSS/JS</span><span class="tag tb">Cloudflare CDN</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚙️ Backend — PocketBase on Railway</div>
+        <p style="font-size:.87rem;margin:0">A lightweight database + API server. Stores brand logos, contact form submissions and sell enquiries. Runs 24/7 on Railway. Hook scripts handle validation, spam filtering and email alerts.</p>
+        <div style="margin-top:.75rem"><span class="tag to">PocketBase v0.23</span><span class="tag tb">Railway</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📐 Request Flow</div>
+<pre><span class="c"># Visitor loads the site</span>
+Browser → Cloudflare Pages CDN → serves index.html (instant, cached globally)
+
+<span class="c"># Page load: JavaScript fetches brand logos</span>
+index.html JS → Railway PocketBase API → logo records → applied to page
+
+<span class="c"># Contact / Sell form submitted</span>
+Form JS → PocketBase API → hook validates + rate-limits
+        → saves record to DB → sends email via Resend API → user sees ✓</pre>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       ACCOUNTS
+  ══════════════════════════════════════════ -->
+  <section id="accounts">
+    <h2>All Accounts & Logins</h2>
+    <div class="danger">
+      <strong>⚠️ Security Notice</strong>
+      This document should be stored securely (password manager, private drive). Never commit passwords or API keys to GitHub. All sensitive keys are stored as Railway environment variables.
+    </div>
+
+    <table>
+      <thead><tr><th>Service</th><th>URL</th><th>How to Login</th><th>What It Controls</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Cloudflare</strong></td>
+          <td><a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a></td>
+          <td>Account email: <strong>R.patel@rsdriveautomation...</strong></td>
+          <td>Website hosting, deployments, DNS, domain</td>
+        </tr>
+        <tr>
+          <td><strong>Railway</strong></td>
+          <td><a href="https://railway.app" target="_blank">railway.app</a></td>
+          <td>Login with GitHub account <strong>rpatel-2019</strong></td>
+          <td>PocketBase backend server, environment variables, logs</td>
+        </tr>
+        <tr>
+          <td><strong>PocketBase Admin</strong></td>
+          <td><a href="https://rsda-pocketbase-production.up.railway.app/_/" target="_blank">rsda-pocketbase-production.up.railway.app/_/</a></td>
+          <td>Admin email + password (set during initial PocketBase setup)</td>
+          <td>Database records — logos, enquiries, sell submissions</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong></td>
+          <td><a href="https://github.com/rpatel-2019/rsda-pocketbase" target="_blank">github.com/rpatel-2019/rsda-pocketbase</a></td>
+          <td>Login with GitHub account <strong>rpatel-2019</strong></td>
+          <td>PocketBase hook code — triggers Railway auto-deploy on push</td>
+        </tr>
+        <tr>
+          <td><strong>Resend</strong></td>
+          <td><a href="https://resend.com" target="_blank">resend.com</a></td>
+          <td>Account email</td>
+          <td>Sends email notifications when forms are submitted</td>
+        </tr>
+        <tr>
+          <td><strong>Domain Registrar</strong></td>
+          <td>Where rsdriveautomation.co.nz was registered (check email receipts)</td>
+          <td>Registrar account</td>
+          <td>Domain renewal only — DNS is managed in Cloudflare</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Environment Variables (stored in Railway)</h3>
+    <p>Go to Railway → project <strong>rsda-pocketbase</strong> → <strong>Variables</strong> tab to view or change these:</p>
+    <table>
+      <thead><tr><th>Variable Name</th><th>Purpose</th><th>Where to get a new one</th></tr></thead>
+      <tbody>
+        <tr><td><code>RESEND_API_KEY</code></td><td>Authenticates the email-sending API call after form submissions</td><td>resend.com → API Keys</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CLOUDFLARE
+  ══════════════════════════════════════════ -->
+  <section id="cloudflare">
+    <h2>Cloudflare Pages — Website Hosting</h2>
+    <p><strong>Dashboard path:</strong> dash.cloudflare.com → Workers & Pages → <strong>rsdriveautomation</strong></p>
+    <p>Cloudflare Pages hosts and serves the static website files. Every time you upload a new deployment, it goes live within ~30 seconds globally.</p>
+
+    <h3>How to Deploy an Update</h3>
+    <div class="step"><div class="step-n">1</div><div>Edit <code>index.html</code> (or any file) inside the <code>site/</code> folder on your local machine</div></div>
+    <div class="step"><div class="step-n">2</div><div>Go to Cloudflare Dashboard → Workers & Pages → <strong>rsdriveautomation</strong></div></div>
+    <div class="step"><div class="step-n">3</div><div>Click <strong>Create deployment</strong> (top right corner)</div></div>
+    <div class="step"><div class="step-n">4</div><div>Drag and drop the entire <code>site/</code> folder into the upload box</div></div>
+    <div class="step"><div class="step-n">5</div><div>Wait ~30 seconds → the new deployment becomes live automatically</div></div>
+    <div class="step"><div class="step-n">6</div><div>Hard refresh the browser: <code>Cmd+Shift+R</code> (Mac) or <code>Ctrl+Shift+R</code> (Windows) to bypass cache</div></div>
+
+    <div class="warn">
+      <strong>⚠️ Always upload the entire <code>site/</code> folder — never just index.html</strong>
+      The folder contains both <code>index.html</code> and the <code>images/</code> subfolder. Upload only the HTML and all images break on the live site.
+    </div>
+
+    <h3>Site Folder Location</h3>
+    <pre>/Users/vapatel/Downloads/rsda-backend/site/</pre>
+    <div class="tip">
+      <strong>💡 Back this folder up</strong>
+      The website source only exists on this Mac. Copy the entire <code>rsda-backend/</code> folder to Google Drive, Dropbox, or a USB drive. If the Mac is lost, the live site still works but you lose the ability to edit it.
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       RAILWAY
+  ══════════════════════════════════════════ -->
+  <section id="railway">
+    <h2>Railway — Backend Server</h2>
+    <p><strong>URL:</strong> <a href="https://railway.app" target="_blank">railway.app</a> → Login with GitHub (rpatel-2019) → project <strong>rsda-pocketbase</strong></p>
+    <p>Railway hosts the PocketBase server that powers the database and form handling. It runs 24/7 and auto-deploys whenever code is pushed to GitHub.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">✅ Auto-Deploy</div>
+        <p style="font-size:.87rem;margin:0">Railway is connected to GitHub repo <strong>rpatel-2019/rsda-pocketbase</strong>. Push code → Railway rebuilds and redeploys automatically within ~2 minutes.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">💳 Billing</div>
+        <p style="font-size:.87rem;margin:0">Starts with a $5 free credit. After that, add a credit card in Railway → Settings → Billing. Expected cost: ~$5–10/month for light usage.</p>
+      </div>
+    </div>
+
+    <h3>Viewing Server Logs</h3>
+    <p>Railway Dashboard → rsda-pocketbase → <strong>Deployments</strong> tab → click the latest deployment → <strong>View Logs</strong>. Use this to debug form errors or hook failures.</p>
+
+    <h3>Restarting the Server</h3>
+    <p>Railway Dashboard → rsda-pocketbase → <strong>Settings</strong> → <strong>Restart</strong>. Or push any commit to GitHub to trigger a fresh deploy.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       POCKETBASE
+  ══════════════════════════════════════════ -->
+  <section id="pocketbase">
+    <h2>PocketBase — Database & API</h2>
+    <p><strong>Admin Panel:</strong> <a href="https://rsda-pocketbase-production.up.railway.app/_/" target="_blank">rsda-pocketbase-production.up.railway.app/_/</a></p>
+    <p>PocketBase is the database. It stores all dynamic data and exposes a REST API that the website's JavaScript calls. The admin panel is a full UI for managing records.</p>
+
+    <h3>Collections (Database Tables)</h3>
+    <table>
+      <thead><tr><th>Collection</th><th>Purpose</th><th>Who Can Write</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>logos</strong></td>
+          <td>Uploaded brand logo images + zoom/x/y positioning for each manufacturer. Read by all visitors, displayed on Manufacturers page and scrolling brand strip.</td>
+          <td>Authenticated admin users only (via Edit button on site or admin panel)</td>
+        </tr>
+        <tr>
+          <td><strong>enquiries</strong></td>
+          <td>Contact form submissions — name, email, phone, company, message, IP, status.</td>
+          <td>Anyone (via contact form). Read via admin panel only.</td>
+        </tr>
+        <tr>
+          <td><strong>sell_enquiries</strong></td>
+          <td>Sell-to-us form submissions — part details, condition, uploaded photos/files.</td>
+          <td>Anyone (via sell form). Read via admin panel only.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Logos Collection — Field Reference</h3>
+    <table>
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>brand</code></td><td>Text</td><td>Exact brand name matching the HTML data-brand attribute (e.g. "Siemens", "Schneider Electric")</td></tr>
+        <tr><td><code>file</code></td><td>File/Image</td><td>The uploaded logo image file</td></tr>
+        <tr><td><code>zoom</code></td><td>Number</td><td>Scale factor — 1 = normal size, 1.5 = 50% larger, 0.8 = smaller</td></tr>
+        <tr><td><code>x</code></td><td>Number</td><td>Horizontal position offset in pixels</td></tr>
+        <tr><td><code>y</code></td><td>Number</td><td>Vertical position offset in pixels</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Viewing Form Submissions</h3>
+    <p>Log into the admin panel → click <strong>enquiries</strong> or <strong>sell_enquiries</strong> in the left sidebar → all submissions appear with timestamps, IP addresses and content.</p>
+
+    <h3>PocketBase Hook Files</h3>
+    <p>Hooks are JavaScript files that run server-side on PocketBase for specific events. They live in the GitHub repo:</p>
+    <pre>GitHub repo: rpatel-2019/rsda-pocketbase
+Local path:  /Users/vapatel/Downloads/rsda-backend/pocketbase/pb/pb_hooks/
+
+pb_hooks/
+├── logos.pb.js       <span class="c"># Runs on logo create/update — sets defaults for zoom/x/y</span>
+└── enquiries.pb.js   <span class="c"># Runs on contact form submit:
+                      #   1. Extracts real IP
+                      #   2. Rate-limits (max 3 per IP per hour)
+                      #   3. Sanitises input (strips HTML, trims, max lengths)
+                      #   4. Spam filter (blocks casino/crypto/URL keywords)
+                      #   5. Sends email notification via Resend API</span></pre>
+    <p>To change hook logic: edit the file locally → <code>git add . && git commit -m "description" && git push</code> → Railway auto-redeploys.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       GITHUB
+  ══════════════════════════════════════════ -->
+  <section id="github">
+    <h2>GitHub — Code Repository</h2>
+    <p><strong>Repo:</strong> <a href="https://github.com/rpatel-2019/rsda-pocketbase" target="_blank">github.com/rpatel-2019/rsda-pocketbase</a></p>
+    <p>This repo contains <strong>only the PocketBase backend</strong> — the Dockerfile and hook scripts. The website HTML is <em>not</em> in GitHub; it deploys separately via Cloudflare direct upload.</p>
+
+    <pre>rsda-pocketbase/
+├── Dockerfile            <span class="c"># Tells Railway how to build and run PocketBase</span>
+└── pb/
+    └── pb_hooks/
+        ├── logos.pb.js       <span class="c"># Logo hook</span>
+        └── enquiries.pb.js   <span class="c"># Form + email hook</span></pre>
+
+    <h3>Making a Change to Hook Code</h3>
+    <pre><span class="c"># 1. Edit the file in:</span>
+/Users/vapatel/Downloads/rsda-backend/pocketbase/pb/pb_hooks/
+
+<span class="c"># 2. Push to GitHub (Railway auto-deploys in ~2 min):</span>
+cd /Users/vapatel/Downloads/rsda-backend/pocketbase
+git add .
+git commit -m "describe your change"
+git push</pre>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       RESEND
+  ══════════════════════════════════════════ -->
+  <section id="resend">
+    <h2>Resend — Email Notifications</h2>
+    <p><strong>URL:</strong> <a href="https://resend.com" target="_blank">resend.com</a></p>
+    <p>Resend sends the email notification to <code>sales@rsdriveautomation.co.nz</code> every time a contact or sell form is submitted. It's called from within the PocketBase hook file.</p>
+
+    <table>
+      <thead><tr><th>Setting</th><th>Current Value</th><th>Where to Change It</th></tr></thead>
+      <tbody>
+        <tr><td>API Key</td><td>Stored as <code>RESEND_API_KEY</code> in Railway env vars</td><td>Railway → Variables tab</td></tr>
+        <tr><td>From address</td><td>noreply@rsdriveautomation.co.nz</td><td><code>enquiries.pb.js</code> → <code>from:</code> field</td></tr>
+        <tr><td>To address</td><td>sales@rsdriveautomation.co.nz</td><td><code>enquiries.pb.js</code> → <code>to:</code> field</td></tr>
+        <tr><td>Free tier limit</td><td>3,000 emails/month, 100/day</td><td>Upgrade at resend.com if needed</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Troubleshooting — Emails Not Arriving</h3>
+    <ol>
+      <li>Check Railway logs for error messages</li>
+      <li>Verify <code>RESEND_API_KEY</code> is set in Railway → Variables</li>
+      <li>Check Resend dashboard → Logs for send failures</li>
+      <li>Check spam/junk folder at sales@rsdriveautomation.co.nz</li>
+      <li>Verify the sending domain is verified in Resend → Domains</li>
+    </ol>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DOMAIN
+  ══════════════════════════════════════════ -->
+  <section id="domain">
+    <h2>Domain & DNS</h2>
+    <p><strong>Domain:</strong> <code>rsdriveautomation.co.nz</code><br>
+    <strong>DNS Managed at:</strong> Cloudflare (dash.cloudflare.com → rsdriveautomation.co.nz → DNS tab)</p>
+    <p>The domain nameservers point to Cloudflare, so ALL DNS changes are made in Cloudflare — not at the registrar. The registrar is only used for domain renewal.</p>
+
+    <table>
+      <thead><tr><th>Record Type</th><th>Name</th><th>Points To</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>CNAME</td><td>@ (root)</td><td>rsdriveautomation.pages.dev</td><td>Main domain → Cloudflare Pages site</td></tr>
+        <tr><td>CNAME</td><td>www</td><td>rsdriveautomation.pages.dev</td><td>www version → same site</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warn">
+      <strong>⚠️ Domain Renewal</strong>
+      Check when rsdriveautomation.co.nz expires at the registrar. Set up auto-renewal to avoid the site going down unexpectedly.
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FILE STRUCTURE
+  ══════════════════════════════════════════ -->
+  <section id="files">
+    <h2>File & Folder Structure</h2>
+
+    <h3>Local Folder (on the Mac)</h3>
+    <pre>/Users/vapatel/Downloads/rsda-backend/
+│
+├── site/                        <span class="c"># ← This is what you upload to Cloudflare</span>
+│   ├── index.html               <span class="c"># The entire website — ALL pages in one file</span>
+│   ├── sitemap.xml              <span class="c"># Tells Google every page to index</span>
+│   ├── robots.txt               <span class="c"># Tells search bots to crawl freely</span>
+│   ├── _redirects               <span class="c"># Cloudflare URL redirect rules</span>
+│   ├── _headers                 <span class="c"># Cloudflare HTTP security headers</span>
+│   └── images/
+│       ├── img01.png            <span class="c"># About page — engineer in orange vest (3.1 MB)</span>
+│       ├── img02.png            <span class="c"># Small image (12 KB)</span>
+│       ├── img03.png            <span class="c"># About page — open cabinet (2.5 MB)</span>
+│       ├── img04.png            <span class="c"># About section / services banner — engineer</span>
+│       ├── img05.png            <span class="c"># Default brand logo placeholder (12 KB)</span>
+│       ├── img06.png            <span class="c"># Services banner — circuit board photo</span>
+│       ├── img07.png            <span class="c"># NZ Owned badge (black background)</span>
+│       └── img08.png            <span class="c"># NZ Owned badge (transparent — used in footer)</span>
+│
+└── pocketbase/                  <span class="c"># ← This is what's in GitHub / deployed to Railway</span>
+    ├── Dockerfile
+    └── pb/
+        └── pb_hooks/
+            ├── logos.pb.js
+            └── enquiries.pb.js</pre>
+
+    <div class="card">
+      <div class="card-title">⚠️ Two-Copy SPA Pattern — Important to Understand</div>
+      <p style="font-size:.87rem;margin:0">The <code>index.html</code> file contains <strong>two complete copies of every page</strong>. This was done for responsive layout reasons. When editing content manually, any change must be made <strong>twice</strong> — once for each copy. Using Find & Replace (Cmd+H in VS Code) handles both automatically as long as the text is unique.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PAGE MAP
+  ══════════════════════════════════════════ -->
+  <section id="pages">
+    <h2>Page Map</h2>
+    <p>Navigation between pages is handled by JavaScript's <code>showPage('name')</code> function. Each page is a <code>&lt;div id="page-NAME"&gt;</code> block in the HTML.</p>
+    <table>
+      <thead><tr><th>Page ID</th><th>Nav Label</th><th>Content</th></tr></thead>
+      <tbody>
+        <tr><td><code>home</code></td><td>Home</td><td>Hero, trust bar, services teaser, about teaser, brands scrolling strip</td></tr>
+        <tr><td><code>about</code></td><td>About Us</td><td>Company story, values, team</td></tr>
+        <tr><td><code>products</code></td><td>Manufacturers</td><td>13 manufacturer cards with product category lists and logos</td></tr>
+        <tr><td><code>services</code></td><td>Services</td><td>Retrofit Solutions, Machine Automation, Additional Expertise, Why Work With Us</td></tr>
+        <tr><td><code>sell</code></td><td>Sell To Us</td><td>Sell enquiry form with file upload</td></tr>
+        <tr><td><code>contact</code></td><td>Contact</td><td>Contact form + address, phone, email</td></tr>
+        <tr><td><code>warranty</code></td><td>Warranty</td><td>Warranty policy (6 sections)</td></tr>
+        <tr><td><code>returns</code></td><td>Returns</td><td>Returns & Refunds policy</td></tr>
+        <tr><td><code>shipping</code></td><td>Shipping</td><td>Shipping & Delivery policy</td></tr>
+        <tr><td><code>terms</code></td><td>Terms</td><td>Terms & Conditions (23 clauses)</td></tr>
+        <tr><td><code>privacy</code></td><td>Privacy</td><td>Privacy Policy (13 sections)</td></tr>
+        <tr><td><code>ip</code></td><td>IP Notice</td><td>Intellectual Property & Trade Mark Notice</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       COMMON CHANGES
+  ══════════════════════════════════════════ -->
+  <section id="common">
+    <h2>Common Content Changes</h2>
+
+    <div class="tip">
+      <strong>💡 Best Tool: VS Code with Find & Replace</strong>
+      Open <code>site/index.html</code> in VS Code. Use <strong>Cmd+H</strong> (Mac) or <strong>Ctrl+H</strong> (Windows) to open Find & Replace. This updates both HTML copies simultaneously.
+    </div>
+
+    <h3>Change the Phone Number</h3>
+    <p>Current: <code>+64 22 375 5736</code> — appears in 3+ places (nav, footer, contact page).</p>
+    <pre>Find:    +64 22 375 5736
+Replace: +64 XX XXX XXXX
+<span class="c"># Use "Replace All" — it will update every occurrence at once</span></pre>
+
+    <h3>Change the Email Address</h3>
+    <pre>Find:    sales@rsdriveautomation.co.nz
+Replace: new@email.com
+<span class="c"># Also update the to: field in pocketbase/pb/pb_hooks/enquiries.pb.js</span>
+<span class="c"># Then git push to redeploy Railway</span></pre>
+
+    <h3>Change Business Address / Location</h3>
+    <pre>Find:    Auckland, New Zealand
+Replace: [new location]
+<span class="c"># Also update the JSON-LD structured data in the &lt;head&gt; section</span></pre>
+
+    <h3>Update the Hero Section (Home Page)</h3>
+    <p>In VS Code, search for <code>id="page-home"</code> and find the <code>class="page-hero"</code> block inside it. Edit the <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code> tags.</p>
+
+    <h3>Change the Page Title / Meta Description (SEO)</h3>
+    <p>At the very top of <code>index.html</code>, inside <code>&lt;head&gt;</code>:</p>
+    <pre>&lt;title&gt;RS Drive Automation | Industrial Automation Parts...&lt;/title&gt;
+&lt;meta name="description" content="Auckland-based supplier..."&gt;</pre>
+
+    <h3>Add or Remove a Navigation Link</h3>
+    <ol>
+      <li>Search for <code>class="nav-menu"</code> — the nav links are listed there</li>
+      <li>Add/remove an <code>&lt;a&gt;</code> tag with <code>onclick="showPage('pageid')"</code></li>
+      <li>Also update the <strong>Footer Quick Links</strong> section (search for <code>Quick Links</code>)</li>
+      <li>If adding a new page, create a <code>&lt;div id="page-newid" class="page"&gt;</code> block</li>
+    </ol>
+
+    <h3>Update Footer Text / Disclaimer</h3>
+    <p>Search for <code>class="footer-bottom"</code> or the specific text you want to change.</p>
+
+    <h3>Update Keywords (SEO)</h3>
+    <p>In the <code>&lt;head&gt;</code> section, find <code>&lt;meta name="keywords"</code> and edit the comma-separated list.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       IMAGES
+  ══════════════════════════════════════════ -->
+  <section id="images">
+    <h2>Images</h2>
+    <p>All images are stored in <code>site/images/</code> and referenced in HTML as <code>src="images/imgXX.png"</code>. They are NOT base64-embedded — they are separate files.</p>
+
+    <h3>Replace an Existing Image</h3>
+    <div class="step"><div class="step-n">1</div><div>Save the new image into <code>site/images/</code> using the <strong>exact same filename</strong> (e.g. <code>img04.png</code>)</div></div>
+    <div class="step"><div class="step-n">2</div><div>Re-upload the full <code>site/</code> folder to Cloudflare Pages</div></div>
+    <div class="step"><div class="step-n">3</div><div>Hard refresh browser (<code>Cmd+Shift+R</code>) to clear the cache</div></div>
+
+    <h3>Add a New Image</h3>
+    <div class="step"><div class="step-n">1</div><div>Name it <code>img09.png</code> (next in sequence) and save to <code>site/images/</code></div></div>
+    <div class="step"><div class="step-n">2</div><div>Reference it in <code>index.html</code> as <code>src="images/img09.png"</code></div></div>
+    <div class="step"><div class="step-n">3</div><div>Upload full <code>site/</code> folder to Cloudflare</div></div>
+
+    <div class="warn">
+      <strong>⚠️ 25 MB Per-File Limit on Cloudflare Pages</strong>
+      No single file can exceed 25 MB. Compress photos before adding them — use <a href="https://squoosh.app" target="_blank">squoosh.app</a> (free, no install). The images/ folder has a total combined size limit of ~25 MB per file.
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       LEGAL
+  ══════════════════════════════════════════ -->
+  <section id="legal">
+    <h2>Legal Pages</h2>
+    <p>All 6 legal pages are fully written and live. To update any of them:</p>
+    <div class="step"><div class="step-n">1</div><div>Open <code>site/index.html</code> in VS Code</div></div>
+    <div class="step"><div class="step-n">2</div><div>Use Cmd+F to search for the page ID (e.g. <code>id="page-terms"</code>)</div></div>
+    <div class="step"><div class="step-n">3</div><div>Edit the HTML content inside that <code>&lt;div&gt;</code> block</div></div>
+    <div class="step"><div class="step-n">4</div><div>Search again — the same block appears a second time. Update it too.</div></div>
+    <div class="step"><div class="step-n">5</div><div>Save and redeploy to Cloudflare</div></div>
+
+    <table>
+      <thead><tr><th>Page</th><th>Search For</th><th>Accessible Via</th></tr></thead>
+      <tbody>
+        <tr><td>Terms & Conditions</td><td><code>id="page-terms"</code></td><td>Footer → Quick Links</td></tr>
+        <tr><td>Privacy Policy</td><td><code>id="page-privacy"</code></td><td>Footer → Quick Links</td></tr>
+        <tr><td>Warranty Policy</td><td><code>id="page-warranty"</code></td><td>Nav → Warranty</td></tr>
+        <tr><td>Returns & Refunds</td><td><code>id="page-returns"</code></td><td>Nav → Returns</td></tr>
+        <tr><td>Shipping & Delivery</td><td><code>id="page-shipping"</code></td><td>Footer → Quick Links</td></tr>
+        <tr><td>IP & Trade Marks</td><td><code>id="page-ip"</code></td><td>Footer → Quick Links</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FORMS
+  ══════════════════════════════════════════ -->
+  <section id="forms">
+    <h2>Contact & Sell Forms</h2>
+
+    <h3>How Forms Work</h3>
+    <pre><span class="c"># User submits the form</span>
+Form JS → POST to PocketBase API (rsda-pocketbase-production.up.railway.app)
+        → Hook: validate + rate-limit + spam-check
+        → Save record to DB collection
+        → Send email to sales@rsdriveautomation.co.nz via Resend
+        → Return 200 OK → page shows "Message sent ✓"</pre>
+
+    <table>
+      <thead><tr><th>Form</th><th>Saves To</th><th>Email Sent To</th><th>Rate Limit</th></tr></thead>
+      <tbody>
+        <tr><td>Contact Us</td><td><code>enquiries</code> collection</td><td>sales@rsdriveautomation.co.nz</td><td>3 per IP per hour</td></tr>
+        <tr><td>Sell To Us</td><td><code>sell_enquiries</code> collection</td><td>sales@rsdriveautomation.co.nz</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Spam Filter — Blocked Keywords</h3>
+    <p>The contact form automatically blocks messages containing: <code>casino</code>, <code>viagra</code>, <code>crypto</code>, <code>bitcoin</code>, <code>nft</code>, <code>forex</code>, <code>seo service</code>, <code>backlink</code>, <code>make money</code>, <code>earn $</code>, <code>free money</code>, <code>click here</code>, <code>limited offer</code>, any URL (<code>http://</code>). Also blocks: <code>@example.com</code>, <code>@test.com</code>, <code>@mailinator.com</code> emails.</p>
+    <p>To add or remove blocked keywords, edit <code>enquiries.pb.js</code> → the <code>SPAM</code> array → push to GitHub.</p>
+
+    <h3>Changing the Rate Limit</h3>
+    <p>In <code>enquiries.pb.js</code> find <code>recent.length >= 3</code> and change <code>3</code> to your desired limit. The <code>3_600_000</code> is 1 hour in milliseconds.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       LOGOS
+  ══════════════════════════════════════════ -->
+  <section id="logos">
+    <h2>Brand Logo System</h2>
+    <p>Logos are stored in PocketBase — not hard-coded in the HTML. On page load, JavaScript fetches all logo records and replaces the placeholder images.</p>
+
+    <h3>Currently Active Brands (with logos in PocketBase)</h3>
+    <p>ABB, Siemens, Schneider Electric, Allen Bradley, B&amp;R, Beckhoff, Bosch Rexroth, Fanuc, Mitsubishi Electric, Omron, Pilz, SEW-Eurodrive, Yaskawa</p>
+
+    <h3>Editing a Logo (Schneider Electric)</h3>
+    <p>The Schneider Electric card is the only one with an active Edit button on the live site:</p>
+    <div class="step"><div class="step-n">1</div><div>Go to <a href="https://rsdriveautomation.co.nz" target="_blank">rsdriveautomation.co.nz</a> → Manufacturers page</div></div>
+    <div class="step"><div class="step-n">2</div><div>Find the Schneider Electric card → click <strong>Edit</strong></div></div>
+    <div class="step"><div class="step-n">3</div><div>Upload a logo, adjust zoom and x/y position with sliders</div></div>
+    <div class="step"><div class="step-n">4</div><div>Click <strong>Save</strong> — saves to PocketBase and applies live immediately</div></div>
+
+    <h3>Re-enabling Edit for Any Brand</h3>
+    <p>In <code>index.html</code>, find the brand's <code>&lt;h3&gt;</code> heading and add this button immediately after it:</p>
+    <pre>&lt;button class="mfr-edit-logo-btn" 
+  onclick="openLogoEditorFor('<span class="v">Siemens</span>')"
+  title="Edit logo"
+  style="margin-left:.6rem;padding:.25rem .55rem;border-radius:4px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:.7rem;color:var(--muted);display:inline-flex;align-items:center;gap:.3rem;vertical-align:middle"&gt;
+  &lt;svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"&gt;
+    &lt;path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/&gt;
+    &lt;path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;
+  &lt;/svg&gt;Edit
+&lt;/button&gt;</pre>
+    <p>Replace <code>Siemens</code> with the exact brand name. Must match the brand name in PocketBase.</p>
+
+    <h3>Adding a Logo Directly via PocketBase Admin</h3>
+    <div class="step"><div class="step-n">1</div><div>Go to PocketBase admin panel → <strong>logos</strong> collection</div></div>
+    <div class="step"><div class="step-n">2</div><div>Click <strong>+ New record</strong></div></div>
+    <div class="step"><div class="step-n">3</div><div>Set <code>brand</code> = exact brand name, upload <code>file</code>, set zoom/x/y</div></div>
+    <div class="step"><div class="step-n">4</div><div>Save — the logo appears on the live site within seconds (on next page load)</div></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       MANUFACTURERS
+  ══════════════════════════════════════════ -->
+  <section id="manufacturers">
+    <h2>Manufacturers Section</h2>
+    <p>The Manufacturers page (<code>page-products</code>) has 13 brand cards. Each card has a logo area, brand name, and a product category grid with part series listed underneath.</p>
+
+    <h3>Adding a New Manufacturer Card</h3>
+    <div class="step"><div class="step-n">1</div><div>In <code>index.html</code>, search for an existing brand section like <code>id="brand-section-ABB"</code></div></div>
+    <div class="step"><div class="step-n">2</div><div>Copy the entire card block and paste it after the last brand</div></div>
+    <div class="step"><div class="step-n">3</div><div>Update: the <code>id</code>, <code>data-brand</code>, brand name, logo alt text, and product categories</div></div>
+    <div class="step"><div class="step-n">4</div><div>Do the same in the second copy of the page (it appears twice)</div></div>
+    <div class="step"><div class="step-n">5</div><div>Upload the logo via PocketBase admin panel or add the Edit button to the card</div></div>
+
+    <h3>Other Manufacturers (Collapse/Expand)</h3>
+    <p>Below the 13 main brands there is a "View All ▼" / "Show Less ▲" toggle that expands a list of additional manufacturers. To add brands to this list, search for <code>other-mfr-list</code> in the HTML and add <code>&lt;li&gt;</code> items.</p>
+
+    <h3>Scrolling Brand Strip (Home Page)</h3>
+    <p>The animated scrolling logo strip on the home page uses <code>class="brand-logo-box"</code> elements with <code>data-brand="..."</code> attributes. Logos load from PocketBase automatically. To add a brand to the strip, copy an existing <code>.brand-logo-box</code> block and update the <code>data-brand</code> and label text.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SEO
+  ══════════════════════════════════════════ -->
+  <section id="seo">
+    <h2>SEO Setup</h2>
+
+    <h3>What's Already Done</h3>
+    <table>
+      <thead><tr><th>Element</th><th>Status</th><th>Where It Lives</th></tr></thead>
+      <tbody>
+        <tr><td>Optimised page title</td><td><span class="tag tg">Done</span></td><td><code>&lt;title&gt;</code> in index.html head</td></tr>
+        <tr><td>Meta description</td><td><span class="tag tg">Done</span></td><td><code>&lt;meta name="description"&gt;</code></td></tr>
+        <tr><td>Keywords meta tag</td><td><span class="tag tg">Done</span></td><td><code>&lt;meta name="keywords"&gt;</code></td></tr>
+        <tr><td>Open Graph tags (social sharing)</td><td><span class="tag tg">Done</span></td><td><code>og:title</code>, <code>og:description</code>, <code>og:image</code> in head</td></tr>
+        <tr><td>JSON-LD Structured Data</td><td><span class="tag tg">Done</span></td><td><code>&lt;script type="application/ld+json"&gt;</code> in head</td></tr>
+        <tr><td>sitemap.xml</td><td><span class="tag tg">Done</span></td><td><code>site/sitemap.xml</code></td></tr>
+        <tr><td>robots.txt</td><td><span class="tag tg">Done</span></td><td><code>site/robots.txt</code></td></tr>
+        <tr><td>Canonical URL tag</td><td><span class="tag tg">Done</span></td><td><code>&lt;link rel="canonical"&gt;</code> in head</td></tr>
+        <tr><td>Google Search Console</td><td><span class="tag to">Pending</span></td><td>search.google.com/search-console</td></tr>
+        <tr><td>Google Business Profile</td><td><span class="tag to">Pending</span></td><td>business.google.com</td></tr>
+        <tr><td>Bing Webmaster Tools</td><td><span class="tag to">Pending</span></td><td>bing.com/webmasters</td></tr>
+        <tr><td>NZ Business Directory Listings</td><td><span class="tag to">Pending</span></td><td>Yellow.co.nz, Finda.co.nz, NZPages.co.nz</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Keywords Being Targeted</h3>
+    <p>industrial automation parts NZ · PLC spare parts New Zealand · Siemens parts Auckland · ABB drives NZ · Schneider Electric parts · automation spare parts supplier · reconditioned automation parts · obsolete PLC parts · servo motor repair NZ · VFD drives Auckland · industrial automation services NZ · retrofit solutions NZ · machine automation Auckland · RS Drive Automation</p>
+
+    <h3>Google Search Console Setup (Highest Priority — Do This First)</h3>
+    <div class="step"><div class="step-n">1</div><div>Go to <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> → Add property</div></div>
+    <div class="step"><div class="step-n">2</div><div>Enter <code>https://rsdriveautomation.co.nz</code> → choose <strong>URL prefix</strong></div></div>
+    <div class="step"><div class="step-n">3</div><div>Verify via DNS: Cloudflare → DNS tab → add the TXT record Google gives you</div></div>
+    <div class="step"><div class="step-n">4</div><div>Once verified: Sitemaps → Add <code>https://rsdriveautomation.co.nz/sitemap.xml</code> → Submit</div></div>
+    <div class="step"><div class="step-n">5</div><div>Google will begin crawling and indexing within 1–3 days</div></div>
+
+    <h3>Google Business Profile (Critical for Local NZ Searches)</h3>
+    <div class="step"><div class="step-n">1</div><div>Go to <a href="https://business.google.com" target="_blank">business.google.com</a> → Create Profile</div></div>
+    <div class="step"><div class="step-n">2</div><div>Business name: <strong>RS Drive Automation</strong></div></div>
+    <div class="step"><div class="step-n">3</div><div>Add Auckland address, <code>+64 22 375 5736</code>, website URL, business hours</div></div>
+    <div class="step"><div class="step-n">4</div><div>Add photos (logo + product/office photos)</div></div>
+    <div class="step"><div class="step-n">5</div><div>This makes you appear in Google Maps and the local business panel</div></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TODO
+  ══════════════════════════════════════════ -->
+  <section id="todo">
+    <h2>Remaining To-Do</h2>
+
+    <table>
+      <thead><tr><th>Task</th><th>Priority</th><th>Who Does It</th></tr></thead>
+      <tbody>
+        <tr><td>Set up Google Search Console + submit sitemap</td><td><span class="tag tr">High</span></td><td>Website owner (manual, free)</td></tr>
+        <tr><td>Create Google Business Profile</td><td><span class="tag tr">High</span></td><td>Website owner (manual, free)</td></tr>
+        <tr><td>Add Railway credit card before $5 credit runs out</td><td><span class="tag tr">High</span></td><td>Website owner — Railway → Billing</td></tr>
+        <tr><td>Fix Schneider Electric logo (Edit button is live on the site)</td><td><span class="tag to">Medium</span></td><td>Website owner via Edit button</td></tr>
+        <tr><td>Add service hexagon banner image to Services page (save as <code>site/images/img09.png</code>)</td><td><span class="tag to">Medium</span></td><td>Developer — then redeploy</td></tr>
+        <tr><td>Register on NZ business directories (Yellow, Finda, NZPages)</td><td><span class="tag to">Medium</span></td><td>Website owner (manual, free)</td></tr>
+        <tr><td>Set up Bing Webmaster Tools</td><td><span class="tag tg2">Low</span></td><td>Developer (bing.com/webmasters)</td></tr>
+        <tr><td>Create LinkedIn Company Page with link back to site</td><td><span class="tag tg2">Low</span></td><td>Website owner</td></tr>
+        <tr><td>Back up <code>rsda-backend/</code> folder to cloud storage</td><td><span class="tag tr">High</span></td><td>Website owner — Google Drive / Dropbox</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+    <p style="font-size:.82rem;color:var(--muted);text-align:center;padding:.5rem 0">
+      RS Drive Automation — Technical Handover Guide v1.0 &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp;
+      <a href="https://rsdriveautomation.co.nz" target="_blank">rsdriveautomation.co.nz</a>
+    </p>
+  </section>
+
+</main>
+</body>
+</html>

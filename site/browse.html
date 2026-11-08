@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Browse Industrial Automation Parts | RS Drive Automation – NZ &amp; AU</title>
+<meta name="description" content="Browse 128,000+ industrial automation spare parts from 700+ brands — Siemens, ABB, Schneider Electric, Omron, Yaskawa and more. New, refurbished &amp; obsolete parts. Auckland NZ supplier with 12-month warranty.">
+<meta name="keywords" content="industrial automation parts NZ, PLC parts Auckland, VFD drives New Zealand, Siemens parts NZ, ABB parts NZ, Schneider Electric spare parts, Omron parts New Zealand, automation spare parts supplier NZ">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://rsdriveautomation.co.nz/browse.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rsdriveautomation.co.nz/browse.html">
+<meta property="og:title" content="Browse 128,000+ Automation Parts | RS Drive Automation">
+<meta property="og:description" content="Search parts from Siemens, ABB, Schneider, Omron, Yaskawa and 700+ more brands. NZ-based supplier, 12-month warranty, fast delivery.">
+<meta property="og:image" content="https://rsdriveautomation.co.nz/images/img04.png">
+<meta property="og:site_name" content="RS Drive Automation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1e3c;--navy2:#162444;--red:#c0392b;--red2:#a93226;--red-light:#fdf2f1;
+  --teal:#0d9488;--teal-light:#f0fdfa;
+  --bg:#f8f9fb;--white:#fff;--border:#e5e7eb;--muted:#6b7280;
+  --fh:'Syne',sans-serif;--fb:'Inter',sans-serif;
+  --r1:6px;--r2:10px;--r3:14px;
+  --shadow1:0 1px 4px rgba(0,0,0,.07);--shadow2:0 4px 16px rgba(0,0,0,.10);
+  --transition:all .18s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);background:var(--bg);color:#1f2937;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+/* ── NAVBAR (identical to index.html) ── */
+#navbar{position:sticky;top:0;left:0;right:0;z-index:1000;height:80px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:1280px;margin:0 auto;padding:0 3vw}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0}
+.nav-logo-name{font-family:var(--fh);font-size:1.35rem;font-weight:800;line-height:1.05;color:var(--navy);letter-spacing:-.02em}
+.nav-logo-rs{color:var(--red)}
+.nav-logo-sub{font-size:.48rem;font-weight:500;color:#888;letter-spacing:.07em;text-transform:uppercase;margin-top:2px}
+.nav-menu{display:flex;align-items:center;gap:1.1rem;list-style:none}
+.nav-menu a{font-size:.875rem;font-weight:500;color:var(--text);transition:color .2s;white-space:nowrap;position:relative;padding-bottom:2px}
+.nav-menu a:hover,.nav-menu a.active{color:var(--red)}
+.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.1rem;border-radius:var(--r1);font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:none;transition:var(--transition);line-height:1}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red2)}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:#0f766e}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--border)}.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:var(--transition)}
+@media(max-width:900px){.nav-menu{display:none}.hamburger{display:flex}}
+
+/* ── SEARCH BAR ── */
+.search-bar-wrap{background:var(--red);padding:.65rem 3vw;position:relative}
+.search-bar-inner{max-width:900px;margin:0 auto;position:relative}
+.search-input-wrap{display:flex;align-items:center;gap:.6rem;background:#fff;border-radius:8px;padding:.5rem .9rem;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.search-input-wrap svg{width:18px;height:18px;flex-shrink:0;color:#9ca3af}
+.search-input-wrap input{flex:1;border:none;outline:none;font-family:var(--fb);font-size:.9rem;color:#1f2937;background:transparent}
+.search-results-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.18);z-index:2000;overflow:hidden;border:1px solid var(--border)}
+.search-results-dropdown.open{display:flex}
+.sd-left{width:230px;flex-shrink:0;border-right:1px solid var(--border);padding:.75rem;background:#f9fafb;overflow-y:auto;max-height:420px}
+.sd-left-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:.5rem}
+.sd-brand-cb{display:inline-flex;align-items:center;gap:.28rem;cursor:pointer;font-size:.76rem;color:#374151;user-select:none;background:#fff;border:1px solid #e5e7eb;border-radius:4px;padding:.2rem .4rem;margin:.1rem .1rem;transition:all .12s}
+.sd-brand-cb:hover{border-color:var(--teal);color:var(--teal)}
+.sd-brand-cb input{width:11px;height:11px;accent-color:var(--teal);cursor:pointer;flex-shrink:0}
+.sd-right{flex:1;overflow-y:auto;max-height:420px;padding:.5rem}
+.sd-no-results{padding:2rem;text-align:center;color:var(--muted);font-size:.85rem}
+.sd-result-row{display:flex;align-items:center;gap:.75rem;padding:.55rem .6rem;border-radius:6px;cursor:pointer;transition:background .12s}
+.sd-result-row:hover{background:#f0fdfa}
+.sd-result-icon{width:34px;height:34px;border-radius:6px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:.65rem;font-weight:800;flex-shrink:0;letter-spacing:-.01em}
+.sd-result-info{flex:1;min-width:0}
+.sd-result-brand{font-size:.7rem;color:var(--muted);line-height:1.2}
+.sd-result-part{font-family:var(--fb);font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.01em}
+.sd-result-cond{font-size:.68rem;color:var(--teal);font-weight:500}
+.sd-result-row svg{width:14px;height:14px;flex-shrink:0;color:#d1d5db}
+
+/* ── MOBILE MENU ── */
+#mobile-menu{display:none;flex-direction:column;background:#fff;padding:1rem 2rem 1.5rem;gap:.5rem;border-top:1px solid var(--border)}
+#mobile-menu.open{display:flex}
+#mobile-menu a{color:rgba(255,255,255,.85);font-size:.95rem;font-weight:500;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+#mobile-menu .btn{margin-top:.5rem;justify-content:center}
+
+/* ── BROWSE LAYOUT ── */
+.browse-wrap{max-width:1440px;margin:0 auto;padding:1.25rem 2rem 3rem;display:grid;grid-template-columns:260px 1fr;gap:1.75rem;align-items:start}
+@media(max-width:960px){.browse-wrap{grid-template-columns:1fr;padding:1rem}}
+
+/* ── SIDEBAR ── */
+.browse-sidebar{background:#fff;border:1px solid var(--border);border-radius:var(--r3);padding:1.25rem;position:sticky;top:140px}
+.sidebar-section{margin-bottom:1.5rem}
+.sidebar-section:last-child{margin-bottom:0}
+.sidebar-section-title{font-family:var(--fh);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.filter-item{display:flex;align-items:center;gap:.5rem;padding:.3rem .2rem;cursor:pointer;border-radius:4px;transition:background .12s}
+.filter-item:hover{background:#f9fafb}
+.filter-item input[type=checkbox]{width:14px;height:14px;accent-color:var(--teal);cursor:pointer;flex-shrink:0}
+.filter-item label{font-size:.83rem;color:#374151;cursor:pointer;flex:1;display:flex;justify-content:space-between;align-items:center}
+.filter-count{font-size:.72rem;color:var(--muted);background:#f3f4f6;padding:.1rem .35rem;border-radius:10px}
+.filter-search{width:100%;border:1px solid var(--border);border-radius:6px;padding:.42rem .65rem;font-size:.82rem;font-family:var(--fb);outline:none;margin-bottom:.6rem}
+.filter-search:focus{border-color:var(--teal)}
+.sidebar-reset{display:block;width:100%;text-align:center;font-size:.8rem;color:var(--teal);cursor:pointer;padding:.4rem;border-radius:4px;border:1px solid var(--teal);background:transparent;font-family:var(--fb);font-weight:500;transition:var(--transition)}
+.sidebar-reset:hover{background:var(--teal-light)}
+.cond-pills{display:flex;flex-wrap:wrap;gap:.35rem}
+.cond-pill{padding:.3rem .65rem;border-radius:20px;border:1.5px solid var(--border);font-size:.78rem;font-weight:500;cursor:pointer;transition:var(--transition);color:#374151}
+.cond-pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.cond-pill:hover:not(.active){border-color:var(--teal);color:var(--teal)}
+
+/* ── MAIN CONTENT ── */
+.browse-main{}
+.breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--muted);margin-bottom:1rem}
+.breadcrumb a{color:var(--teal);font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb-sep{color:#d1d5db}
+.browse-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.browse-title-block{}
+.browse-title{font-family:var(--fh);font-size:1.5rem;font-weight:800;color:var(--navy);line-height:1.2}
+.browse-subtitle{font-size:.85rem;color:var(--muted);margin-top:.3rem}
+.browse-controls{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.browse-sort{border:1px solid var(--border);border-radius:6px;padding:.42rem .65rem;font-size:.82rem;font-family:var(--fb);outline:none;color:#374151;cursor:pointer;background:#fff}
+.browse-sort:focus{border-color:var(--teal)}
+.browse-part-search{border:1px solid var(--border);border-radius:6px;padding:.42rem .7rem;font-size:.82rem;font-family:var(--fb);outline:none;width:200px}
+.browse-part-search:focus{border-color:var(--teal)}
+
+/* ── GROUP HEADER (category in brand view / brand in cat view) ── */
+.group-section{margin-bottom:2rem}
+.group-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem;padding-bottom:.6rem;border-bottom:2px solid var(--border)}
+.group-badge{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 .6rem;background:var(--navy);color:#fff;border-radius:6px;font-family:var(--fh);font-size:.65rem;font-weight:800;letter-spacing:-.01em}
+.group-name{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--navy)}
+.group-count{font-size:.78rem;color:var(--muted);background:#f3f4f6;padding:.2rem .5rem;border-radius:10px;margin-left:auto}
+
+/* ── PRODUCT GRID ── */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.85rem;margin-bottom:1rem}
+.prod-card{background:#fff;border:1px solid var(--border);border-radius:var(--r2);padding:1rem;display:flex;flex-direction:column;gap:.55rem;cursor:pointer;transition:var(--transition);text-decoration:none}
+.prod-card:hover{border-color:var(--teal);box-shadow:var(--shadow2);transform:translateY(-2px)}
+.prod-card-top{display:flex;align-items:center;gap:.5rem}
+.prod-initials{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:.62rem;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-.01em}
+.prod-brand-name{font-size:.72rem;color:var(--muted);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prod-part{font-family:var(--fb);font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.3;word-break:break-all;letter-spacing:.01em}
+.prod-badges{display:flex;flex-wrap:wrap;gap:.3rem}
+.prod-badge{padding:.15rem .45rem;border-radius:10px;font-size:.68rem;font-weight:600}
+.badge-new{background:#d1fae5;color:#065f46}
+.badge-refurb{background:#dbeafe;color:#1e40af}
+.badge-used{background:#fef3c7;color:#92400e}
+.badge-cat{background:#f3f4f6;color:#374151}
+.prod-price{font-size:.82rem;font-weight:700;color:var(--teal);margin-top:auto}
+.prod-action{font-size:.75rem;font-weight:600;color:var(--teal);display:flex;align-items:center;gap:.25rem;margin-top:.1rem}
+.prod-action svg{width:11px;height:11px;stroke:var(--teal);fill:none;stroke-width:2.5}
+
+/* ── PAGINATION ── */
+.pagination{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:1.5rem;flex-wrap:wrap}
+.page-btn{padding:.42rem .72rem;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:500;cursor:pointer;background:#fff;color:#374151;transition:var(--transition);font-family:var(--fb)}
+.page-btn:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
+.page-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.page-btn:disabled{opacity:.35;cursor:not-allowed}
+.page-ellipsis{padding:.42rem .4rem;color:var(--muted);font-size:.82rem}
+
+/* ── LOADING / EMPTY ── */
+.browse-loading{text-align:center;padding:4rem 2rem;color:var(--muted)}
+.browse-loading .spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.browse-empty{text-align:center;padding:4rem 2rem;color:var(--muted)}
+.browse-empty svg{width:48px;height:48px;stroke:var(--border);fill:none;stroke-width:1.5;margin:0 auto 1rem;display:block}
+
+/* ── VIEW TOGGLE ── */
+.view-mode{display:flex;gap:.3rem}
+.view-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);border-radius:5px;cursor:pointer;background:#fff;color:var(--muted);transition:var(--transition)}
+.view-btn:hover,.view-btn.active{border-color:var(--teal);color:var(--teal)}
+.view-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+
+/* list view */
+.product-grid.list-view{grid-template-columns:1fr}
+.list-view .prod-card{flex-direction:row;align-items:center;padding:.7rem 1rem}
+.list-view .prod-card-top{flex-shrink:0}
+.list-view .prod-part{font-size:.92rem}
+.list-view .prod-price{margin-top:0;margin-left:auto}
+.list-view .prod-action{display:none}
+.list-view .prod-badges{gap:.2rem}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <div class="nav-logo-text">
+        <div class="nav-logo-name"><span class="nav-logo-rs">RS Drive</span><br>Automation</div>
+        <div class="nav-logo-sub">INDUSTRIAL AUTOMATION SERVICES &amp; SPARE PARTS</div>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#about">About Us</a></li>
+      <li><a href="/#products" class="active">Manufacturers</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#sell">Sell To Us</a></li>
+      <li><a href="/#warranty">Warranty</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn btn-red" onclick="window.location.href='/#contact'">Get a Quote</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="search-bar-wrap">
+  <div class="search-bar-inner">
+    <div class="search-input-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="prod-search" type="text" placeholder="Search 128,000+ parts by part number or brand..." autocomplete="off" oninput="handleSearch(this.value)" onfocus="openSearchDropdown()">
+    </div>
+    <div class="search-results-dropdown" id="search-dropdown">
+      <div class="sd-left">
+        <span class="sd-left-title">Filter by brand:</span>
+        <div id="sd-brand-filters"></div>
+      </div>
+      <div class="sd-right" id="sd-results-panel"><div class="sd-no-results">Start typing to search 128,000+ parts…</div></div>
+    </div>
+  </div>
+</div>
+<div id="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/#about">About Us</a>
+  <a href="/#products">Manufacturers</a>
+  <a href="/#services">Services</a>
+  <a href="/#warranty">Warranty &amp; Returns</a>
+  <a href="/#sell">Sell To Us</a>
+  <a href="/#contact">Contact Us</a>
+  <button class="btn btn-red" onclick="window.location.href='/#contact'">Get a Quote</button>
+</div>
+
+<!-- ═══════════════ BROWSE PAGE ═══════════════ -->
+<div class="browse-wrap">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="browse-sidebar">
+
+    <!-- Dynamic filter section (brands or categories) -->
+    <div class="sidebar-section" id="sidebar-filter-section">
+      <div class="sidebar-section-title" id="sidebar-filter-title">Loading…</div>
+      <input class="filter-search" id="filter-search-input" type="text" placeholder="Search filters…" oninput="filterSidebarList(this.value)">
+      <div id="sidebar-filter-list"></div>
+    </div>
+
+
+
+    <!-- Reset -->
+    <button class="sidebar-reset" onclick="resetFilters()">Clear All Filters</button>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="browse-main">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/#products">Manufacturers</a>
+      <span class="breadcrumb-sep">›</span>
+      <span id="breadcrumb-current">Loading…</span>
+    </div>
+
+    <!-- Header -->
+    <div class="browse-header">
+      <div class="browse-title-block">
+        <div class="browse-title" id="browse-title">Loading…</div>
+        <div class="browse-subtitle" id="browse-subtitle"></div>
+      </div>
+      <div class="browse-controls">
+        <input class="browse-part-search" id="part-search-input" type="text" placeholder="Filter part no…" oninput="setPartFilter(this.value)">
+        <select class="browse-sort" onchange="setSortMode(this.value)">
+          <option value="part-asc">Part No. A→Z</option>
+          <option value="part-desc">Part No. Z→A</option>
+          
+          
+        </select>
+        <div class="view-mode">
+          <div class="view-btn active" id="view-grid-btn" onclick="setView('grid')" title="Grid view">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="view-btn" id="view-list-btn" onclick="setView('list')" title="List view">
+            <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results area -->
+    <div id="browse-results">
+      <div class="browse-loading">
+        <div class="spinner"></div>
+        Loading parts database…
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div id="browse-pagination"></div>
+
+  </main>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// CATEGORY MAPPING — brand + part prefix → category
+// ══════════════════════════════════════════════
+var BRAND_CAT_RULES = {
+  'Siemens': [
+    ['6ES','PLC Systems'],['6EP','Power Supply'],['6AV','HMIs & Industrial PCs'],
+    ['6AG','HMIs & Industrial PCs'],['6SE','Drives, Motors & Circuits Protection'],
+    ['6SL','Drives, Motors & Circuits Protection'],['6SN','CNC'],['6FC','CNC'],
+    ['6DD','PLC Systems'],['6GK','Industrial Communication'],['6XV','Industrial Communication'],
+    ['6DP','Industrial Communication'],['6DS','PLC Systems'],['3RK','Safety Systems'],
+    ['3RA','Drives, Motors & Circuits Protection'],['3RT','Drives, Motors & Circuits Protection'],
+    ['3TF','Drives, Motors & Circuits Protection'],['3RV','Drives, Motors & Circuits Protection'],
+    ['3VL','Drives, Motors & Circuits Protection'],['5SJ','Drives, Motors & Circuits Protection'],
+    ['5SL','Drives, Motors & Circuits Protection'],['A5E','Modules'],['*','General Automation']
+  ],
+  'Schneider Electric': [
+    ['ATV','Drives, Motors & Circuits Protection'],['LXM','Drives, Motors & Circuits Protection'],
+    ['LC1','Drives, Motors & Circuits Protection'],['GV','Drives, Motors & Circuits Protection'],
+    ['NSX','Drives, Motors & Circuits Protection'],['HMIG','HMIs & Industrial PCs'],
+    ['HMIS','HMIs & Industrial PCs'],['XBTG','HMIs & Industrial PCs'],['XBTN','HMIs & Industrial PCs'],
+    ['TM5','PLC Systems'],['TM2','PLC Systems'],['TM3','Modules'],
+    ['M241','PLC Systems'],['M251','PLC Systems'],['M258','PLC Systems'],
+    ['ABL','Power Supply'],['APC','Power Supply'],['XPS','Safety Systems'],
+    ['SR2','PLC Systems'],['SR3','PLC Systems'],['*','General Automation']
+  ],
+  'ABB': [
+    ['ACS','Drives, Motors & Circuits Protection'],['ACH','Drives, Motors & Circuits Protection'],
+    ['IRC','Robotics'],['IRB','Robotics'],['1SBL','Drives, Motors & Circuits Protection'],
+    ['2CDS','Drives, Motors & Circuits Protection'],['2CSB','Drives, Motors & Circuits Protection'],
+    ['1SDA','Drives, Motors & Circuits Protection'],['CP','HMIs & Industrial PCs'],
+    ['PM','PLC Systems'],['1SAP','PLC Systems'],['*','General Automation']
+  ],
+  'Phoenix Contact': [
+    ['FL','Industrial Communication'],['QUINT','Power Supply'],['TRIO','Power Supply'],
+    ['MINI','Power Supply'],['PSI','Power Supply'],['MCR','Modules'],['EMG','Modules'],
+    ['*','Passive Components']
+  ],
+  'Sick':        [['*','Sensors']],
+  'Eaton': [
+    ['DG1','Drives, Motors & Circuits Protection'],['DC1','Drives, Motors & Circuits Protection'],
+    ['PKZ','Drives, Motors & Circuits Protection'],['DIL','Drives, Motors & Circuits Protection'],
+    ['FAZ','Drives, Motors & Circuits Protection'],['EASY','PLC Systems'],
+    ['EU5C','Industrial Communication'],['*','Drives, Motors & Circuits Protection']
+  ],
+  'Omron': [
+    ['CP1','PLC Systems'],['CP2','PLC Systems'],['CJ1','PLC Systems'],['CJ2','PLC Systems'],
+    ['CS1','PLC Systems'],['NX','PLC Systems'],['NY','HMIs & Industrial PCs'],
+    ['NB','HMIs & Industrial PCs'],['NS','HMIs & Industrial PCs'],['NA','HMIs & Industrial PCs'],
+    ['E5','Sensors'],['E3','Sensors'],['F3','Safety Systems'],['G9','Safety Systems'],
+    ['S8','Power Supply'],['MX2','Drives, Motors & Circuits Protection'],
+    ['3G3','Drives, Motors & Circuits Protection'],['R88','Drives, Motors & Circuits Protection'],
+    ['*','General Automation']
+  ],
+  'TE Connectivity': [['*','Passive Components']],
+  'Festo': [
+    ['CMMT','Drives, Motors & Circuits Protection'],['CMMS','Drives, Motors & Circuits Protection'],
+    ['CPX','Modules'],['STO','Safety Systems'],['SDFB','Sensors'],['SME','Sensors'],
+    ['*','Drives, Motors & Circuits Protection']
+  ],
+  'Yaskawa': [
+    ['SGDV','Drives, Motors & Circuits Protection'],['SGDH','Drives, Motors & Circuits Protection'],
+    ['SGDS','Drives, Motors & Circuits Protection'],['CIMR','Drives, Motors & Circuits Protection'],
+    ['JZRCR','Robotics'],['*','Drives, Motors & Circuits Protection']
+  ],
+  'BTicino':    [['*','Passive Components']],
+  'Harting':    [['*','Passive Components']],
+  'Rittal':     [['*','General Automation']],
+  'Molex':      [['*','Passive Components']],
+  'Gewiss':     [['*','Passive Components']],
+  'Mitsubishi': [
+    ['FR','Drives, Motors & Circuits Protection'],['MR','Drives, Motors & Circuits Protection'],
+    ['FX','PLC Systems'],['GT','HMIs & Industrial PCs'],['CR','Industrial Communication'],
+    ['Q','PLC Systems'],['L','PLC Systems'],['*','General Automation']
+  ],
+  'Mean Well':  [['*','Power Supply']],
+  'Wago':       [['787','Power Supply'],['750','Modules'],['*','Passive Components']],
+  'Legrand':    [['*','Passive Components']],
+  'Weidmuller': [['*','Passive Components']]
+};
+
+function getCategory(brand, part) {
+  var rules = BRAND_CAT_RULES[brand];
+  if (!rules) return 'General Automation';
+  var p = (part || '').toUpperCase();
+  for (var i = 0; i < rules.length; i++) {
+    if (rules[i][0] === '*' || p.indexOf(rules[i][0].toUpperCase()) === 0) return rules[i][1];
+  }
+  return 'General Automation';
+}
+
+// ══════════════════════════════════════════════
+// BRAND COLOURS
+// ══════════════════════════════════════════════
+var BRAND_COLORS = {
+  'Siemens':'#009999','Schneider Electric':'#3DCD58','ABB':'#FF000F',
+  'Phoenix Contact':'#E2001A','Sick':'#000000','Eaton':'#B12024',
+  'Omron':'#CC0000','TE Connectivity':'#C8102E','Festo':'#00699A',
+  'Yaskawa':'#003087','BTicino':'#002D62','Harting':'#E30613',
+  'Rittal':'#003C71','Molex':'#003087','Gewiss':'#004B8D',
+  'Mitsubishi':'#E60026','Mean Well':'#2B5BA1','Wago':'#F7A600',
+  'Legrand':'#004494','Weidmuller':'#003087'
+};
+function brandColor(b){ return BRAND_COLORS[b] || '#0f1e3c'; }
+function brandInitials(b){
+  if (!b) return '??';
+  var words = b.trim().split(/\s+/);
+  if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
+  return b.substring(0,2).toUpperCase();
+}
+function condLabel(c){ return c==0?'New':c==1?'Refurbished':'Used'; }
+function condClass(c){ return c==0?'badge-new':c==1?'badge-refurb':'badge-used'; }
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+var _data = null;        // {b:[brand names], p:[[bidx,part,cond,price],...]}
+var _allProducts = [];   // [{brand,part,cond,price,cat}, ...]
+var _filtered = [];      // after all filters applied
+var _page = 1;
+var PAGE_SIZE = 48;
+var _viewMode = 'brand'; // 'brand' or 'cat'
+var _targetBrand = '';   // set when ?brand=XXX
+var _targetCat = '';     // set when ?cat=XXX
+var _activeCats = {};    // checked category filters (brand view)
+var _activeBrands = {};  // checked brand filters (cat view)
+var _condFilter = 'all';
+var _sortMode = 'part-asc';
+var _partFilter = '';
+var _gridView = 'grid';
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+(function init(){
+  var params = new URLSearchParams(window.location.search);
+  _targetBrand = params.get('brand') || '';
+  _targetCat   = params.get('cat')   || '';
+
+  if (!_targetBrand && !_targetCat) {
+    document.getElementById('browse-title').textContent = 'All Parts';
+    document.getElementById('browse-subtitle').textContent = 'Browse the full product catalogue';
+    document.getElementById('breadcrumb-current').textContent = 'All Parts';
+  } else if (_targetBrand) {
+    _viewMode = 'brand';
+    document.getElementById('browse-title').textContent = _targetBrand;
+    document.getElementById('browse-subtitle').textContent = 'All parts from ' + _targetBrand;
+    document.getElementById('breadcrumb-current').textContent = _targetBrand;
+    document.title = _targetBrand + ' Parts — RS Drive Automation';
+    document.getElementById('sidebar-filter-title').textContent = 'Category';
+    document.getElementById('filter-search-input').placeholder = 'Search categories…';
+  } else {
+    _viewMode = 'cat';
+    document.getElementById('browse-title').textContent = _targetCat;
+    document.getElementById('browse-subtitle').textContent = 'All parts in this category';
+    document.getElementById('breadcrumb-current').textContent = _targetCat;
+    document.title = _targetCat + ' — RS Drive Automation';
+    document.getElementById('sidebar-filter-title').textContent = 'Brand';
+    document.getElementById('filter-search-input').placeholder = 'Search brands…';
+  }
+
+  loadData();
+})();
+
+function loadData(){
+  if (_data) { processData(); return; }
+  fetch('/products.json')
+    .then(function(r){ return r.json(); })
+    .then(function(json){
+      _data = json;
+      processData();
+    })
+    .catch(function(e){
+      document.getElementById('browse-results').innerHTML =
+        '<div class="browse-empty"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Failed to load product data. Please refresh.</div>';
+    });
+}
+
+function processData(){
+  var brands = _data.b;
+  var prods = _data.p;
+  _allProducts = [];
+
+  for (var i = 0; i < prods.length; i++) {
+    var row = prods[i];
+    var brand = brands[row[0]] || '';
+    var part  = row[1] || '';
+    var cond  = row[2];
+    var price = row[3] || 0;
+    var cat   = getCategory(brand, part);
+
+    // filter by target
+    if (_targetBrand && brand.toLowerCase() !== _targetBrand.toLowerCase()) continue;
+    if (_targetCat   && cat !== _targetCat) continue;
+
+    _allProducts.push({brand:brand, part:part, cond:cond, price:price, cat:cat});
+  }
+
+  buildSidebarFilters();
+  applyFilters();
+}
+
+// ══════════════════════════════════════════════
+// SIDEBAR
+// ══════════════════════════════════════════════
+function buildSidebarFilters(){
+  var counts = {};
+  _allProducts.forEach(function(p){
+    var key = _viewMode === 'brand' ? p.cat : p.brand;
+    counts[key] = (counts[key] || 0) + 1;
+  });
+
+  var keys = Object.keys(counts).sort(function(a,b){
+    return counts[b] - counts[a]; // sort by count desc
+  });
+
+  var html = '';
+  keys.forEach(function(k){
+    html += '<div class="filter-item" data-filter-key="' + escHtml(k) + '">' +
+      '<input type="checkbox" id="flt-' + escHtml(k).replace(/\s/g,'_') + '" onchange="toggleFilter(\'' + escHtml(k).replace(/'/g,"\\'") + '\',this.checked)">' +
+      '<label for="flt-' + escHtml(k).replace(/\s/g,'_') + '">' +
+        escHtml(k) +
+        '<span class="filter-count">' + counts[k].toLocaleString() + '</span>' +
+      '</label>' +
+    '</div>';
+  });
+
+  document.getElementById('sidebar-filter-list').innerHTML = html || '<div style="font-size:.8rem;color:var(--muted)">No filters available</div>';
+}
+
+function filterSidebarList(val){
+  var q = val.trim().toLowerCase();
+  document.querySelectorAll('#sidebar-filter-list .filter-item').forEach(function(el){
+    var k = el.getAttribute('data-filter-key').toLowerCase();
+    el.style.display = (!q || k.includes(q)) ? '' : 'none';
+  });
+}
+
+function toggleFilter(key, checked){
+  if (_viewMode === 'brand') {
+    if (checked) _activeCats[key] = true; else delete _activeCats[key];
+  } else {
+    if (checked) _activeBrands[key] = true; else delete _activeBrands[key];
+  }
+  _page = 1;
+  applyFilters();
+}
+
+function setCondFilter(val, el){
+  _condFilter = val;
+  document.querySelectorAll('.cond-pill').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  _page = 1;
+  applyFilters();
+}
+
+function setPartFilter(val){
+  _partFilter = val.trim().toLowerCase();
+  _page = 1;
+  applyFilters();
+}
+
+function setSortMode(val){
+  _sortMode = val;
+  renderResults();
+}
+
+function resetFilters(){
+  _activeCats = {}; _activeBrands = {}; _condFilter = 'all'; _partFilter = ''; _page = 1;
+  document.querySelectorAll('#sidebar-filter-list input[type=checkbox]').forEach(function(c){ c.checked = false; });
+  document.querySelectorAll('.cond-pill').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelector('.cond-pill[data-cond="all"]').classList.add('active');
+  document.getElementById('part-search-input').value = '';
+  applyFilters();
+}
+
+// ══════════════════════════════════════════════
+// FILTERING
+// ══════════════════════════════════════════════
+function applyFilters(){
+  var catKeys  = Object.keys(_activeCats);
+  var brandKeys = Object.keys(_activeBrands);
+
+  _filtered = _allProducts.filter(function(p){
+    if (_condFilter !== 'all' && String(p.cond) !== _condFilter) return false;
+    if (_partFilter && p.part.toLowerCase().indexOf(_partFilter) < 0) return false;
+    if (catKeys.length  > 0 && !_activeCats[p.cat])     return false;
+    if (brandKeys.length > 0 && !_activeBrands[p.brand]) return false;
+    return true;
+  });
+
+  renderResults();
+}
+
+// ══════════════════════════════════════════════
+// SORTING
+// ══════════════════════════════════════════════
+function sortProducts(arr){
+  var sorted = arr.slice();
+  sorted.sort(function(a,b){
+    if (_sortMode === 'part-asc')   return a.part < b.part ? -1 : a.part > b.part ? 1 : 0;
+    if (_sortMode === 'part-desc')  return a.part > b.part ? -1 : a.part < b.part ? 1 : 0;
+    if (_sortMode === 'price-asc')  return (a.price||0) - (b.price||0);
+    if (_sortMode === 'price-desc') return (b.price||0) - (a.price||0);
+    return 0;
+  });
+  return sorted;
+}
+
+// ══════════════════════════════════════════════
+// RENDERING
+// ══════════════════════════════════════════════
+function renderResults(){
+  var total = _filtered.length;
+  var subtitle = total.toLocaleString() + ' part' + (total !== 1 ? 's' : '');
+  if (_targetBrand)   subtitle += ' from ' + _targetBrand;
+  else if (_targetCat) subtitle += ' in ' + _targetCat;
+  document.getElementById('browse-subtitle').textContent = subtitle;
+
+  if (total === 0){
+    document.getElementById('browse-results').innerHTML =
+      '<div class="browse-empty">' +
+        '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>' +
+        '<p>No parts match your filters.</p>' +
+      '</div>';
+    document.getElementById('browse-pagination').innerHTML = '';
+    return;
+  }
+
+  // Sort
+  var sorted = sortProducts(_filtered);
+
+  // Paginate
+  var totalPages = Math.ceil(total / PAGE_SIZE);
+  if (_page > totalPages) _page = totalPages;
+  var start = (_page - 1) * PAGE_SIZE;
+  var pageItems = sorted.slice(start, start + PAGE_SIZE);
+
+  // Group by category (brand view) or brand (cat view)
+  var groups = {};
+  var groupOrder = [];
+  pageItems.forEach(function(p){
+    var gKey = _viewMode === 'brand' ? p.cat : p.brand;
+    if (!groups[gKey]){ groups[gKey] = []; groupOrder.push(gKey); }
+    groups[gKey].push(p);
+  });
+
+  var html = '';
+  groupOrder.forEach(function(gKey){
+    var items = groups[gKey];
+    var badge = brandInitials(gKey);
+    var bgCol = _viewMode === 'cat' ? brandColor(gKey) : 'var(--navy)';
+    html += '<div class="group-section">' +
+      '<div class="group-header">' +
+        '<div class="group-badge" style="background:' + bgCol + '">' + escHtml(badge) + '</div>' +
+        '<div class="group-name">' + escHtml(gKey) + '</div>' +
+        '<div class="group-count">' + items.length + ' on this page</div>' +
+      '</div>' +
+      '<div class="product-grid' + (_gridView === 'list' ? ' list-view' : '') + '">';
+
+    items.forEach(function(p){
+      var url = '/product.html?part=' + encodeURIComponent(p.part) +
+                '&brand=' + encodeURIComponent(p.brand) +
+                '&cond=' + p.cond;
+      var initials = brandInitials(p.brand);
+      var bgColor  = brandColor(p.brand);
+      var showCat  = _viewMode === 'cat'; // show cat badge in cat view
+      html += '<a class="prod-card" href="' + url + '">' +
+        '<div class="prod-card-top">' +
+          '<div class="prod-initials" style="background:' + bgColor + '">' + escHtml(initials) + '</div>' +
+          '<div class="prod-brand-name">' + escHtml(p.brand) + '</div>' +
+        '</div>' +
+        '<div class="prod-part">' + escHtml(p.part) + '</div>' +
+        '<div class="prod-badges">' +
+          
+          (showCat ? '<span class="prod-badge badge-cat">' + escHtml(p.cat) + '</span>' : '') +
+        '</div>' +
+        
+        '<div class="prod-action">View Details <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+      '</a>';
+    });
+
+    html += '</div></div>';
+  });
+
+  document.getElementById('browse-results').innerHTML = html;
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages){
+  if (totalPages <= 1){ document.getElementById('browse-pagination').innerHTML = ''; return; }
+
+  var html = '<div class="pagination">';
+  html += '<button class="page-btn" onclick="goPage(1)" ' + (_page===1?'disabled':'') + '>«</button>';
+  html += '<button class="page-btn" onclick="goPage(' + (_page-1) + ')" ' + (_page===1?'disabled':'') + '>‹ Prev</button>';
+
+  var pages = paginationRange(_page, totalPages);
+  pages.forEach(function(p){
+    if (p === '…'){
+      html += '<span class="page-ellipsis">…</span>';
+    } else {
+      html += '<button class="page-btn' + (p===_page?' active':'') + '" onclick="goPage(' + p + ')">' + p + '</button>';
+    }
+  });
+
+  html += '<button class="page-btn" onclick="goPage(' + (_page+1) + ')" ' + (_page===totalPages?'disabled':'') + '>Next ›</button>';
+  html += '<button class="page-btn" onclick="goPage(' + totalPages + ')" ' + (_page===totalPages?'disabled':'') + '>»</button>';
+  html += '</div>';
+
+  document.getElementById('browse-pagination').innerHTML = html;
+}
+
+function paginationRange(current, total){
+  if (total <= 7) {
+    var arr = [];
+    for (var i=1;i<=total;i++) arr.push(i);
+    return arr;
+  }
+  var pages = [1];
+  if (current > 3) pages.push('…');
+  for (var p = Math.max(2, current-1); p <= Math.min(total-1, current+1); p++) pages.push(p);
+  if (current < total - 2) pages.push('…');
+  pages.push(total);
+  return pages;
+}
+
+function goPage(n){
+  _page = n;
+  renderResults();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function setView(mode){
+  _gridView = mode;
+  document.getElementById('view-grid-btn').classList.toggle('active', mode==='grid');
+  document.getElementById('view-list-btn').classList.toggle('active', mode==='list');
+  document.querySelectorAll('.product-grid').forEach(function(g){
+    g.classList.toggle('list-view', mode==='list');
+  });
+}
+
+function escHtml(s){
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ══════════════════════════════════════════════
+// SEARCH BAR (same logic as index.html)
+// ══════════════════════════════════════════════
+var _searchData = null;
+var _searchTimer = null;
+var _blurTimer = null;
+var _activeBrandFilters = {};
+
+function loadSearchData(){
+  if (_data) { _searchData = _data; buildSearchBrandFilters(); retriggerSearch(); return; }
+  fetch('/products.json').then(function(r){return r.json();}).then(function(d){
+    _searchData = d; buildSearchBrandFilters(); retriggerSearch();
+  });
+}
+function retriggerSearch(){
+  var inp = document.getElementById('prod-search');
+  if (inp && inp.value.trim().length >= 1) handleSearch(inp.value);
+}
+
+function buildSearchBrandFilters(){
+  if (!_searchData) return;
+  var brands = _searchData.b;
+  var html = '';
+  brands.forEach(function(b){
+    var id = 'sdbf-' + b.replace(/\s/g,'_');
+    html += '<label class="sd-brand-cb"><input type="checkbox" id="' + id + '" value="' + escHtml(b) + '" onchange="filterSearchBrand(this)"><span>' + escHtml(b) + '</span></label>';
+  });
+  document.getElementById('sd-brand-filters').innerHTML = html;
+}
+
+function filterSearchBrand(cb){
+  if (cb.checked) _activeBrandFilters[cb.value] = true;
+  else delete _activeBrandFilters[cb.value];
+  var inp = document.getElementById('prod-search');
+  if (inp && inp.value.trim()) handleSearch(inp.value.trim());
+}
+
+function openSearchDropdown(){
+  var dd = document.getElementById('search-dropdown');
+  if (dd) dd.classList.add('open');
+  if (!_searchData) loadSearchData();
+}
+
+function handleSearch(val){
+  clearTimeout(_searchTimer);
+  if (!val || val.trim().length < 1){ closeSearchDropdown(); return; }
+  openSearchDropdown();
+  if (!_searchData){
+    var panel = document.getElementById('sd-results-panel');
+    if (panel) panel.innerHTML = '<div class="sd-no-results" style="color:var(--teal)">⏳ Loading parts…</div>';
+    loadSearchData(); return;
+  }
+  _searchTimer = setTimeout(function(){
+    var results = doSearch(val.trim());
+    renderSearchResults(results, val.trim());
+  }, 150);
+}
+
+function tokenMatch(tokens, part, brand){
+  var pu = part.toUpperCase(), bu = brand.toUpperCase();
+  return tokens.every(function(t){ return pu.indexOf(t) >= 0 || bu.indexOf(t) >= 0; });
+}
+
+function doSearch(q){
+  if (!_searchData) return [];
+  var qu = q ? q.trim().toUpperCase() : '';
+  var tokens = qu ? qu.split(/\s+/).filter(function(t){ return t.length > 0; }) : [];
+  var brands = _searchData.b;
+  var prods = _searchData.p;
+  var activeBrands = Object.keys(_activeBrandFilters);
+  var results = [];
+
+  if (activeBrands.length > 1 && !tokens.length) {
+    // Multiple brands, no text: collect proportionally
+    var perBrand = Math.ceil(40 / activeBrands.length);
+    var counts = {};
+    activeBrands.forEach(function(br){ counts[br] = 0; });
+    for (var i = 0; i < prods.length; i++){
+      var brand = brands[prods[i][0]] || '';
+      if (counts[brand] !== undefined && counts[brand] < perBrand){
+        results.push({brand:brand, part:prods[i][1]||'', cond:prods[i][2], price:prods[i][3]||0});
+        counts[brand]++;
+        if (results.length >= 40) break;
+      }
+    }
+    return results;
+  }
+
+  for (var i = 0; i < prods.length && results.length < 40; i++){
+    var row = prods[i];
+    var brand = brands[row[0]] || '';
+    var part  = row[1] || '';
+    if (activeBrands.length > 0 && activeBrands.indexOf(brand) < 0) continue;
+    if (!tokens.length || tokenMatch(tokens, part, brand)){
+      results.push({brand:brand, part:part, cond:row[2], price:row[3]||0});
+    }
+  }
+  return results;
+}
+
+function renderSearchResults(results, q){
+  var panel = document.getElementById('sd-results-panel');
+  if (!panel) return;
+  if (!results.length){
+    panel.innerHTML = '<div class="sd-no-results">No results for "' + escHtml(q) + '"</div>';
+    return;
+  }
+  var html = '';
+  results.forEach(function(r){
+    var initials = brandInitials(r.brand);
+    var bgColor = brandColor(r.brand);
+    var url = '/product.html?part=' + encodeURIComponent(r.part) + '&brand=' + encodeURIComponent(r.brand) + '&cond=' + r.cond;
+    html += '<div class="sd-result-row" onmousedown="goToProduct(\'' + url.replace(/'/g,"\\'") + '\');return false;" style="cursor:pointer">' +
+      '<div class="sd-result-icon" style="background:' + bgColor + '">' + escHtml(initials) + '</div>' +
+      '<div class="sd-result-info">' +
+        '<div class="sd-result-brand">' + escHtml(r.brand) + '</div>' +
+        '<div class="sd-result-part">' + escHtml(r.part) + '</div>' +
+      '</div>' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex-shrink:0;color:#d1d5db"><polyline points="9 18 15 12 9 6"/></svg>' +
+    '</div>';
+  });
+  panel.innerHTML = html;
+}
+
+function scheduleCloseSearch(){ _blurTimer = setTimeout(closeSearchDropdown, 250); }
+function closeSearchDropdown(){ var dd = document.getElementById('search-dropdown'); if(dd) dd.classList.remove('open'); }
+function goToProduct(url){ clearTimeout(_blurTimer); closeSearchDropdown(); window.location.href = url; }
+
+document.addEventListener('click', function(e){
+  var wrap = document.querySelector('.search-bar-inner');
+  if (wrap && !wrap.contains(e.target)) closeSearchDropdown();
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape'){ closeSearchDropdown(); var inp = document.getElementById('prod-search'); if(inp) inp.blur(); }
+});
+
+// ══════════════════════════════════════════════
+// MOBILE NAV
+// ══════════════════════════════════════════════
+function toggleMobileMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+</script>
+</body>
+</html>

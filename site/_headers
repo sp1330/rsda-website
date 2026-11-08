@@ -1,0 +1,22 @@
+/*
+  # Prevent browsers from sniffing content types
+  X-Content-Type-Options: nosniff
+
+  # Block the site from being loaded inside an iframe (clickjacking protection)
+  X-Frame-Options: DENY
+
+  # Force HTTPS for 1 year, include subdomains
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Don't leak the full URL in the Referer header to third parties
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Disable browser features that aren't needed
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+  # Content Security Policy
+  # - script-src / style-src need 'unsafe-inline' because the site uses inline <script> and <style>
+  # - img-src includes data: (base64 logos) and blob: (canvas exports), plus your Railway PocketBase URL
+  # - connect-src allows API calls to PocketBase on Railway
+  # Replace YOUR_RAILWAY_HOST with your actual Railway domain (e.g. pocketbase-production-abc.up.railway.app)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://*.railway.app https://*.up.railway.app https://upload.wikimedia.org https://commons.wikimedia.org; connect-src 'self' https://*.railway.app https://*.up.railway.app; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
